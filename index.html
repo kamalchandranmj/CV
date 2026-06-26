@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kamalchandran MJ — CV</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f9f9f8;
+    --surface: #ffffff;
+    --text: #1a1a18;
+    --muted: #6b6b66;
+    --subtle: #b0afa8;
+    --accent: #1a5fa8;
+    --accent-bg: #eaf1fb;
+    --border: #e2e1db;
+    --success-bg: #eaf3de;
+    --success-text: #3b6d11;
+    --tag-bg: #f1f0ea;
+    --tag-text: #444441;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 2.5rem 1rem;
+  }
+
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 3rem 3.5rem;
+  }
+
+  /* Header */
+  .header { border-bottom: 0.5px solid var(--border); padding-bottom: 1.75rem; margin-bottom: 2rem; }
+  .name { font-size: 26px; font-weight: 600; letter-spacing: -0.4px; }
+  .tagline { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 10px; font-size: 11.5px; padding: 4px 10px;
+    background: var(--success-bg); color: var(--success-text);
+    border-radius: 6px; border: 0.5px solid #c0dd97;
+    font-weight: 500;
+  }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; }
+  .contact-item { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .contact-item a { color: var(--accent); text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* Sections */
+  .section { margin-bottom: 2.25rem; }
+  .section-label {
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--subtle);
+    margin-bottom: 1rem; padding-bottom: 6px;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* Summary */
+  .summary { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
+  .summary li { margin-left: 16px; margin-bottom: 6px; }
+
+  /* Experience */
+  .job { margin-bottom: 1.6rem; }
+  .job:last-child { margin-bottom: 0; }
+  .job-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+  .job-title { font-size: 15px; font-weight: 600; }
+  .job-date { font-size: 12px; color: var(--subtle); white-space: nowrap; }
+  .job-company { font-size: 13px; color: var(--accent); font-weight: 500; margin-top: 2px; }
+  .job-bullets { margin-top: 8px; padding-left: 16px; }
+  .job-bullets li { font-size: 13.5px; color: var(--muted); margin-bottom: 5px; line-height: 1.6; }
+
+  /* Sabbatical */
+  .sabbatical { background: var(--tag-bg); border-radius: 8px; padding: 12px 16px; margin-top: 1rem; }
+  .sabbatical-title { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .sabbatical-items { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .sabbatical-tag { font-size: 12px; padding: 3px 9px; background: var(--surface); border: 0.5px solid var(--border); border-radius: 5px; color: var(--tag-text); }
+
+  /* Tools */
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tool-tag { font-size: 12px; padding: 4px 10px; background: var(--tag-bg); border: 0.5px solid var(--border); border-radius: 5px; color: var(--tag-text); font-family: 'Courier New', monospace; }
+
+  /* Certs */
+  .cert-list { list-style: none; }
+  .cert-list li { font-size: 13.5px; color: var(--muted); padding: 5px 0; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .cert-list li:last-child { border-bottom: none; }
+  .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .cert-pursuing { font-size: 11px; color: var(--subtle); margin-left: 4px; }
+
+  /* Education */
+  .edu-item { margin-bottom: 1rem; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-degree { font-size: 14.5px; font-weight: 600; }
+  .edu-school { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* Languages */
+  .lang-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .lang-card { background: var(--tag-bg); border: 0.5px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+  .lang-name { font-size: 14px; font-weight: 600; }
+  .lang-level { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* Print */
+  @media print {
+    body { background: white; padding: 0; }
+    .page { border: none; border-radius: 0; padding: 2rem; box-shadow: none; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 1.5rem 1.25rem; }
+    .name { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="header">
+    <div class="name">Kamalchandran Manikam Jayachandran</div>
+    <div class="tagline">Tech Lead · IT Mainframe Infrastructure Operations · Berlin, Germany</div>
+    <div class="badge">✓ German Chancenkarte (Opportunity Card) · Available immediately</div>
+    <div class="contact-row">
+      <span class="contact-item">📞 <a href="tel:+4915221404197">+49 152 21404197</a></span>
+      <span class="contact-item">✉️ <a href="mailto:kamal.mj@gmail.com">kamal.mj@gmail.com</a></span>
+      <span class="contact-item">📍 Berlin, Germany (relocated March 2026)</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-label">Summary</div>
+    <ul class="summary">
+      <li>Tech Lead in IT Mainframe Infrastructure Operations with 13+ years of experience, specialising in Remote Infrastructure Management and ITIL-based service delivery.</li>
+      <li>Selected as Subject Matter Expert to lead a one-month on-site knowledge transition with US-based teams at BNY.</li>
+      <li>Experienced in root cause analysis, continuous process improvement, and incident management across large-scale enterprise environments.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Experience</div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">Associate Infrastructure Operations</div>
+        <div class="job-date">Jul 2019 – Aug 2024</div>
+      </div>
+      <div class="job-company">BNY (Bank of New York Mellon)</div>
+      <ul class="job-bullets">
+        <li>Spearheaded development of automated monitoring scripts using Control-M and ESP over 36 months, driving a <strong>40% reduction</strong> in ticket resolution time for Tier 1 incidents across 500+ applications.</li>
+        <li>Identified process gaps and implemented improvements, reducing recurring system failures by <strong>27%</strong> and enhancing operational reliability.</li>
+        <li>Managed infrastructure maintenance schedules using ServiceNow for 10+ global teams over 18 months, achieving <strong>99.5% system uptime</strong>.</li>
+        <li>Optimised batch jobs and job chains to improve performance, reliability, and execution time.</li>
+        <li>Performed root cause analysis and implemented permanent fixes for job failures and incidents.</li>
+        <li>Participated in DR activity, Pri1 bridge calls, and coordinated with application support teams.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">Service Delivery Specialist</div>
+        <div class="job-date">Aug 2017 – Feb 2019</div>
+      </div>
+      <div class="job-company">IBM India</div>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">Specialist, Production Support</div>
+        <div class="job-date">Feb 2013 – Jul 2017</div>
+      </div>
+      <div class="job-company">Verizon Data Services (US & India) — Project transitioned to IBM</div>
+      <ul class="job-bullets">
+        <li>Directed quarterly maintenance windows across 15 mission-critical systems, achieving <strong>99.7% uptime compliance</strong> over 12 months while meeting SLA requirements.</li>
+        <li>Streamlined batch operations using ESP Automation, resulting in a <strong>15% decrease in manual interventions</strong> for 200+ nightly jobs across 12 systems.</li>
+        <li>Managed Critical Incident (PRI1/2) response and coordinated Emergency Requests for Change (RFC).</li>
+        <li>Led configuration and decommissioning of ESP agents in mainframe and distributed environments.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">Analyst</div>
+        <div class="job-date">Jul 2011 – Jul 2012</div>
+      </div>
+      <div class="job-company">BNY (Bank of New York Mellon)</div>
+    </div>
+
+    <div class="job">
+      <div class="job-top">
+        <div class="job-title">Retainer</div>
+        <div class="job-date">Jun 2010 – Jun 2011</div>
+      </div>
+      <div class="job-company">Larsen & Toubro Infotech</div>
+    </div>
+
+    <div class="sabbatical">
+      <div class="sabbatical-title">Sabbatical · Sept 2024 – Dec 2025</div>
+      <div class="sabbatical-items">
+        <span class="sabbatical-tag">NLP Practitioner (Certified)</span>
+        <span class="sabbatical-tag">Acting & Breathwork</span>
+        <span class="sabbatical-tag">Kalaripayattu (Martial Arts)</span>
+        <span class="sabbatical-tag">Culinary Arts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Tools & Technologies</div>
+    <div class="tools-grid">
+      <span class="tool-tag">CA7</span>
+      <span class="tool-tag">ESP</span>
+      <span class="tool-tag">Control-M</span>
+      <span class="tool-tag">SDSF</span>
+      <span class="tool-tag">JCL</span>
+      <span class="tool-tag">WSF</span>
+      <span class="tool-tag">SAR</span>
+      <span class="tool-tag">TSO Commands</span>
+      <span class="tool-tag">ISPF</span>
+      <span class="tool-tag">ServiceNow</span>
+      <span class="tool-tag">Remedy</span>
+      <span class="tool-tag">Weblog</span>
+      <span class="tool-tag">HPSM</span>
+      <span class="tool-tag">BMC</span>
+      <span class="tool-tag">ITIL</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Certifications</div>
+    <ul class="cert-list">
+      <li><span class="cert-dot"></span> PRINCE2 Practitioner</li>
+      <li><span class="cert-dot"></span> Certified Scrum Master</li>
+      <li><span class="cert-dot"></span> ITIL V3 Foundation</li>
+      <li><span class="cert-dot"></span> Certified NLP Practitioner</li>
+      <li><span class="cert-dot"></span> Cloud Architect <span class="cert-pursuing">(pursuing)</span></li>
+      <li><span class="cert-dot"></span> Generative AI Engineer <span class="cert-pursuing">(pursuing)</span></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Education</div>
+    <div class="edu-item">
+      <div class="edu-degree">Master of Business Administration (MBA)</div>
+      <div class="edu-school">VIT University, Vellore, India · 2007</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-degree">Bachelor of Engineering — Electronics & Communication</div>
+      <div class="edu-school">S.A. Engineering College, Madras University, Chennai, India · 2004</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Languages</div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="lang-name">English</div>
+        <div class="lang-level">Fluent</div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">German</div>
+        <div class="lang-level">A2 certified · B1 & B2 in progress</div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">Tamil</div>
+        <div class="lang-level">Native</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
